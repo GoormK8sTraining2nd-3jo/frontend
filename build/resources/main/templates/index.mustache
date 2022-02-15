@@ -1,30 +1,5 @@
 {{>layout/header}}
-
-<body class="is-preload">
-
-<!--<div class="col-md-12" style="margin-bottom: 10px; margin-top: 10px;">-->
-<!--    &lt;!&ndash;로그인 기능 영역 &ndash;&gt;-->
-<!--    <div class="row">-->
-
-<!--        <div class="col-md-2 text-left" style="font-size:xx-large;">-->
-<!--            KRIVE-->
-<!--        </div>-->
-<!--        <div class="col-md-10 text-right">-->
-
-<!--            <a href="/posts/save" role="button" class="btn btn-primary">글등록</a>-->
-        <!--            {{#userName}}-->
-<!--                Logged in as: <span id="user">{{userName}}</span>-->
-<!--                <a href="/logout" class="btn btn-info active" role="button">Logout</a>-->
-        <!--            {{/userName}}-->
-
-        <!--            {{^userName}}-->
-<!--                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>-->
-<!--                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>-->
-        <!--            {{/userName}}-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!-- Wrapper -->
+<body class="is-preload" id = "body">
 <div id="wrapper">
 
     <!-- Header -->
@@ -52,15 +27,15 @@
                         <li>
 
 
-                        <div v-if="!image">
-                            <input type="file" @change="onFileChange">
+                        <div>
+                            <input type="file" id ="MyFile">
                         </div>
                         </li>
                         <li>
-                        <div v-else>
-                            <img :src="image" />
-                            <button v-if="!uploadURL" @click="uploadImage">Upload image</button>
-                        </div>
+                            <div >
+                                <img :src="image" />
+                                <button id = "btn-upload">Upload</button>
+                            </div>
                         </li>
                     </div>
             </ul>
@@ -69,123 +44,14 @@
 
     <!-- Main -->
     <!--    로그인전-->
-{{^kubeName}}
         <div id="main">
             <article class="thumb">
-                <a href="images/fulls/01.jpg" class="image"><img src="images/fulls/01.jpg" alt=""/></a>
+                <a href="images/fulls/01.jpg" class="image"><img src="images/fulls/01.jpg" alt="" /></a>
                 <h2>U</h2>
             </article>
-            <article class="thumb">
-                <a href="images/fulls/02.jpg" class="image"><img src="images/fulls/02.jpg" alt=""/></a>
-                <h2>P</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/03.jpg" class="image"><img src="images/fulls/03.jpg" alt=""/></a>
-                <h2>L</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/04.jpg" class="image"><img src="images/fulls/04.jpg" alt=""/></a>
-                <h2>O</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/05.jpg" class="image"><img src="images/fulls/05.jpg" alt=""/></a>
-                <h2>A</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/06.jpg" class="image"><img src="images/fulls/06.jpg" alt=""/></a>
-                <h2>D</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/07.jpg" class="image"><img src="images/fulls/07.jpg" alt=""/></a>
-                <h2>U</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/08.jpg" class="image"><img src="images/fulls/08.jpg" alt=""/></a>
-                <h2>R</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/09.jpg" class="image"><img src="images/fulls/09.jpg" alt=""/></a>
-                <h2>P</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/10.jpg" class="image"><img src="images/fulls/10.jpg" alt=""/></a>
-                <h2>I</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/11.jpg" class="image"><img src="images/fulls/11.jpg" alt=""/></a>
-                <h2>C</h2>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/12.jpg" class="image"><img src="images/fulls/12.jpg" alt=""/></a>
-                <h2>.</h2>
-            </article>
         </div>
-{{/kubeName}}
-    <!--    로그인후-->
-{{#kubeName}}
-        <div id="main">
-            <article class="thumb">
-                <a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt=""/></a>
-                <h2>Magna feugiat lorem</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/02.jpg" class="image"><img src="images/thumbs/02.jpg" alt=""/></a>
-                <h2>Nisl adipiscing</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/03.jpg" class="image"><img src="images/thumbs/03.jpg" alt=""/></a>
-                <h2>Tempus aliquam veroeros</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt=""/></a>
-                <h2>Aliquam ipsum sed dolore</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt=""/></a>
-                <h2>Cursis aliquam nisl</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt=""/></a>
-                <h2>Sed consequat phasellus</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt=""/></a>
-                <h2>Mauris id tellus arcu</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/08.jpg" class="image"><img src="images/thumbs/08.jpg" alt=""/></a>
-                <h2>Nunc vehicula id nulla</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/09.jpg" class="image"><img src="images/thumbs/09.jpg" alt=""/></a>
-                <h2>Neque et faucibus viverra</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/10.jpg" class="image"><img src="images/thumbs/10.jpg" alt=""/></a>
-                <h2>Mattis ante fermentum</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/11.jpg" class="image"><img src="images/thumbs/11.jpg" alt=""/></a>
-                <h2>Sed ac elementum arcu</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-            <article class="thumb">
-                <a href="images/fulls/12.jpg" class="image"><img src="images/thumbs/12.jpg" alt=""/></a>
-                <h2>Vehicula id nulla dignissim</h2>
-                <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-            </article>
-        </div>
-{{/kubeName}}
+
+
 
 
 
