@@ -1,0 +1,53 @@
+{{>layout/header}}
+<body class="is-preload" id = "body">
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <div style="font-size:xx-large;">
+            KRIVE
+        </div>
+        <nav>
+            <ul>
+                <!--                &lt;!&ndash;로그인후&ndash;&gt;-->
+                    <!--                {{#kubeName}}-->
+                <!--                    <li><a href="/posts/save" role="button" class="btn" style="padding:.375rem .75rem !important">upload</a></li>-->
+                <!--                    <li>-->
+                <!--                    <span id="user">{{kubeName}}</span>-->
+                <!--                    <a href="/logout" class="btn" role="button" style="padding:.375rem .75rem !important; background-color: #4285F4">Logout</a></li>-->
+                    <!--                {{/kubeName}}-->
+                <!--                &lt;!&ndash;로그인 전&ndash;&gt;-->
+                    <!--                {{^kubeName}}-->
+                <!--                    <li><a href="/oauth2/authorization/google" class="btn" role="button" style="padding:.375rem .75rem !important; background-color: #4285F4">Google</a></li>-->
+                <!--                    <li> <a href="/oauth2/authorization/naver" class="btn" role="button" style="padding:.375rem .75rem !important; background-color:#2DB400">Naver</a></li>-->
+                    <!--                {{/kubeName}}-->
+
+
+                    <div id="app">
+                        <li>
+                        <div>
+                            <input type="file" id ="MyFile">
+                        </div>
+                        </li>
+                        <li>
+                            <div >
+                                <img :src="image" />
+                                <button id = "btn-upload">Upload</button>
+                            </div>
+                        </li>
+                    </div>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <!--    로그인전-->
+        <div id="main">
+        </div>
+
+
+
+
+
+
+{{>layout/footer}}
