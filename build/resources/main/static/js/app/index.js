@@ -4,17 +4,26 @@ function getBase64(file){
     reader.onload = function () {
         const base64String = reader.result
             .replace("data:", "")
-            .replace(/^.+,/, "");;
-        console.log(base64String);
+            .replace(/^.+,/, "");
         return base64String;
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
     };
 }
+function filetype(file){
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        end=reader.result.search(";");
+        const filetype = reader.result.substring(11,end)
+        return filetype;
 
-
-
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
+}
 
 var settings2 = {
     "url": "http://3.38.89.188:20115/api/image/",
@@ -34,7 +43,6 @@ var main ={
 
         var file = document.querySelector('#MyFile').files[0];
         var result=getBase64(file); // prints the base64 string
-
         var settings1 = {
             "url": "http://3.38.89.188:20115/api/image/upload",
             "method": "POST",
@@ -43,7 +51,7 @@ var main ={
                 "Content-Type": "application/json"
             },
             "data": JSON.stringify({
-                "extension": "png",
+                "extension": filetype(file),
                 "base64": result
             }),
         };
@@ -71,29 +79,7 @@ $.ajax(settings2).done(function (response) {
    // console.log(array2);
     // const main = document.querySelector("#main");
     array2.forEach(function (item){
-         //var tag = "<article class='thumb'><a class='image' style='background-image: url('"+item+"'); cursor: pointer; outline: 0px;'><img src='"+item+"'alt='' style='display: none;'></a><h2>&nbsp</h2></article>"
-
-        // var tag = "<article className= 'thumb'><a class='image' style='background-image: url(&quot;"+item+"&quot;); cursor: pointer; outline: 0px;'><img src='"+item+"'alt='' style='display: none;'></a><h2>&nbsp</h2></article>";
-
           var tag ="<article class='thumb'><a href='"+item+"' class='image'><img src='"+item+"' alt=''/></a><h2>&nbsp</h2></article>";
-        // var tag = "<article><a className=\"image\" style=\"cursor: pointer; outline: 0px;\"><img src=\""+item+"\" alt=\"\" style=\"display: none;\"></a><h2>&nbsp</h2></article>"
-
-          // const article = document.createElement("article");
-        // article.className="thumb";
-        // const a = document.createElement("a");
-        // a.className="img";
-        // a.setAttribute('href',item);
-        // const img = document.createElement("img");
-        // img.src=item;
-        // img.alt="";
-        // const h2 = document.createElement("h2");
-        // h2.innerText="&nbsp";
-        //
-        // a.appendChild(img);
-        // article.appendChild(a);
-        // article.appendChild(h2);
-        //
-        // $('#main').appendChild(article);
 
         $('#main').append(tag);
 
