@@ -1,3 +1,5 @@
+
+
 var settings2 = {
     "url": "http://3.38.89.188:20115/api/image/",
     "method": "GET",
@@ -5,7 +7,7 @@ var settings2 = {
     "timeout": 0,
 };
 
-const toBase64 = file => new Promise((resolve, reject) => {
+const GetBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result.replace("data:", "")
@@ -13,14 +15,16 @@ const toBase64 = file => new Promise((resolve, reject) => {
     reader.onerror = error => reject(error);
 });
 
-const getfiletypeA = file => new Promise((resolve, reject) => {
+const GetFiletype = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result.replace("data:image/", "")
         .replace(/;.*/, ""));
     reader.onerror = error => reject(error);
 });
-var main ={
+
+
+var start ={
     init : function () {
         var _this =this;
         $('#btn-upload').on('click', function () {
@@ -30,8 +34,8 @@ var main ={
     upload : async function (){
         var file = document.querySelector('#MyFile').files[0];
 
-        base64String =await toBase64(file);
-        filetype = await getfiletypeA(file);
+        const base64String =await GetBase64(file);
+        const filetype = await GetFiletype(file);
 
         var settings1 = {
             "url": "http://3.38.89.188:20115/api/image/upload",
@@ -55,21 +59,35 @@ var main ={
 
 };
 
-
-
-
 $.ajax(settings2).done(function (response) {
-    array1 = Object.values(response);
-    array2 = Object.values(array1[2]);
+    const array1 = Object.values(response);
+    const array2 = Object.values(array1[2]);
     array2.forEach(function (item){
-          var tag ="<article class='thumb'><a href='"+item+"' class='image'><img src='"+item+"' alt=''/></a><h2>&nbsp</h2></article>";
 
-        $('#main').append(tag);
+        var newElement = $('<article>').attr('class','thumb');
+        $(newElement).append($('<a>',{
+            href : item,
+            class : 'image'
+        }).append($('<img/>',{
+            src : item,
+            alt : ''
+        })));
+        $(newElement).append($('<h2>',{
+            innerText : '&nbsp'
+        }));
 
+
+        $('#main').append(newElement);
+
+
+
+        // var tag ="<article class='thumb'><a href='"+item+"' class='image'><img src='"+item+"' alt=''/></a><h2>&nbsp</h2></article>";
+        // $('#main').append(tag);
     });
 }).fail(function (error){
     console.log('로드실패');
 });
-main.init();
+
+start.init();
 
 
